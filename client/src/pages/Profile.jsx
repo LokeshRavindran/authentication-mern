@@ -60,7 +60,7 @@ const Profile = () => {
         </div>
         <div className="flex gap-2 items-center">
           {profileData.likeStatus ? (
-            <p>Thanks for liking this</p>
+            <p>Thanks for fixing this</p>
           ) : (
             <p>Tap on the heart to fix it</p>
           )}
