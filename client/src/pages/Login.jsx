@@ -26,9 +26,11 @@ const Login = () => {
       if (response.status) {
         localStorage.setItem("isLoggedIn", response.status);
         localStorage.setItem("token", response.token);
+        localStorage.setItem("username", response.username);
         authContext.setUser({
           isLoggedIn: response.status,
           token: response.token,
+          username: response.username,
         });
         successToast("Login successful");
         navigate("/homepage");

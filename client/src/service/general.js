@@ -12,3 +12,15 @@ export const getHomepageSections = async () => {
     errorHandler(error);
   }
 };
+
+export const getProfileInformation = async (payload) => {
+  try {
+    const response = await axios.post("profile", payload, {
+      headers: generateJSONHeaders(),
+    });
+    return response?.data;
+  } catch (error) {
+    console.log(error);
+    errorHandler(error);
+  }
+};

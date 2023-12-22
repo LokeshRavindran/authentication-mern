@@ -1,24 +1,18 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import ProfileOptions from "./ProfileOptions";
 
 const Header = () => {
   const authContext = useContext(AuthContext);
 
-  const logoutHandler = () => {
-    authContext.setUser({
-      isLoggedIn: false,
-      token: "",
-    });
-    localStorage.removeItem("token");
-    localStorage.removeItem("isLoggedIn");
-  };
-
   return (
-    <div className="flex items-center justify-between p-8 bg-violet-400">
-      <Link to={"/"}>Logo</Link>
+    <header className="flex items-center justify-between p-8 bg-violet-400">
+      <Link to={"/"}>
+        <img src={"/images/logo.png"} alt="logo" className="h-10 w-10" />
+      </Link>
       {authContext.isLoggedIn ? (
-        <button onClick={logoutHandler}>Logout</button>
+        <ProfileOptions />
       ) : (
         <div>
           <Link to={"/login"}>Login</Link>
@@ -26,7 +20,7 @@ const Header = () => {
           <Link to={"/signup"}>Signup</Link>
         </div>
       )}
-    </div>
+    </header>
   );
 };
 

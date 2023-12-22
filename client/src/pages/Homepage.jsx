@@ -26,8 +26,13 @@ const Homepage = () => {
   }, [isLoggedIn]);
 
   return (
-    <div className="text-center m-auto mt-8 max-w-2xl px-6 pb-6">
+    <main className="text-center m-auto mt-8 max-w-2xl px-6 pb-6">
       <h1>Homepage</h1>
+      {isLoggedIn && (
+        <p>
+          Get to know about the application by going through the below tabs.
+        </p>
+      )}
       <ul className="flex mt-6 justify-center gap-12">
         {sections.length > 0 ? (
           sections.map((section) => (
@@ -46,7 +51,7 @@ const Homepage = () => {
       </ul>
       {activeSection === "frontend" && isLoggedIn && <FrontendContent />}
       {activeSection === "backend" && isLoggedIn && <BackendContent />}
-    </div>
+    </main>
   );
 };
 
@@ -64,6 +69,11 @@ const FrontendContent = () => {
         </span>{" "}
         sent from backend and the authentication state is managed with the help
         of React context in frontend.
+      </li>
+      <li>
+        It also has a <span className="text-red-500">protected route</span> so
+        that even if the user tries to directly access it, he/she will be
+        <span className="text-red-500"> redirected to the login page.</span>
       </li>
       <li>
         The login and signup pages are created using{" "}
@@ -109,18 +119,19 @@ const BackendContent = () => {
         </span>
       </li>
       <li>
-        <span className="text-red-500">mongoose</span> package is used to{" "}
+        <span className="text-red-500">mongoose</span> package is used for{" "}
         <span className="text-red-500">
           database connectivity along with schema creation for data
         </span>
         .
       </li>
       <li>
-        There are 3 apis currently created for this application such as
+        There are 4 apis currently created for this application such as
         <ol className="ml-8 list-decimal list-inside">
-          <li>Login</li>
-          <li>Signup</li>
-          <li>Homepage sections - Frontend, Backend</li>
+          <li>Login - POST</li>
+          <li>Signup - POST</li>
+          <li>Homepage sections - GET</li>
+          <li>Profile - POST</li>
         </ol>
       </li>
       <li>
