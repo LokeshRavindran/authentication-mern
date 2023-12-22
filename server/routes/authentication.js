@@ -35,12 +35,13 @@ router.post("/login", async (req, res, next) => {
       email: user.email,
       phone: user.phone,
     },
-    "secretCodeForJwtToEncodeAndDecode",
+    process.env.JWT_SECRET,
     { expiresIn: constants.JWT_EXPIRY_TIME }
   );
 
   return res.status(200).json({
     status: true,
+    username: user.email,
     token: token,
   });
 });
