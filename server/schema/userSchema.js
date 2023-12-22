@@ -11,6 +11,7 @@ const userSchema = new Schema({
     default: Date.now,
   },
   company: String,
+  likeStatus: Boolean,
 });
 
 module.exports = model("users", userSchema);

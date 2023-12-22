@@ -24,3 +24,15 @@ export const getProfileInformation = async (payload) => {
     errorHandler(error);
   }
 };
+
+export const updateLikeStatus = async (payload) => {
+  try {
+    const response = await axios.post("updateLikeStatus", payload, {
+      headers: generateJSONHeaders(),
+    });
+    return response?.data;
+  } catch (error) {
+    console.log(error);
+    errorHandler(error);
+  }
+};

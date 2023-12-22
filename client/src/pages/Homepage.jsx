@@ -2,10 +2,11 @@ import React, { useEffect, useState, useContext } from "react";
 import { getHomepageSections } from "../service/general";
 import { errorToast } from "../helper/toastHelper";
 import AuthContext from "../context/AuthContext";
+import FilledHeart from "/images/heart-filled.png";
 
 const Homepage = () => {
   const authContext = useContext(AuthContext);
-  const [sections, setSections] = useState([]);
+  const [homepageData, setHomepageData] = useState({});
   const [activeSection, setActiveSection] = useState("frontend");
   const isLoggedIn = authContext.isLoggedIn;
 
@@ -13,7 +14,7 @@ const Homepage = () => {
     async function getHomepageData() {
       try {
         const response = await getHomepageSections();
-        setSections(response.data);
+        setHomepageData(response);
       } catch (error) {
         errorToast(error.message);
       }
@@ -21,7 +22,7 @@ const Homepage = () => {
     if (isLoggedIn) {
       getHomepageData();
     } else {
-      setSections([]);
+      setHomepageData({});
     }
   }, [isLoggedIn]);
 
@@ -29,13 +30,19 @@ const Homepage = () => {
     <main className="text-center m-auto mt-8 max-w-2xl px-6 pb-6">
       <h1>Homepage</h1>
       {isLoggedIn && (
-        <p>
-          Get to know about the application by going through the below tabs.
-        </p>
+        <>
+          <div className="flex items-center justify-center">
+            <p>No of Hearts: {homepageData.likesCount}</p>
+            <img src={FilledHeart} alt={"heart"} className="h-8 w-8" />
+          </div>
+          <p>
+            Get to know about the application by going through the below tabs.
+          </p>
+        </>
       )}
       <ul className="flex mt-6 justify-center gap-12">
-        {sections.length > 0 ? (
-          sections.map((section) => (
+        {homepageData?.data?.length > 0 ? (
+          homepageData?.data.map((section) => (
             <li key={section}>
               <button
                 className="capitalize border-2 border-black rounded-md p-2"
@@ -126,12 +133,13 @@ const BackendContent = () => {
         .
       </li>
       <li>
-        There are 4 apis currently created for this application such as
+        There are 5 apis currently created for this application such as
         <ol className="ml-8 list-decimal list-inside">
           <li>Login - POST</li>
           <li>Signup - POST</li>
           <li>Homepage sections - GET</li>
           <li>Profile - POST</li>
+          <li>UpdateLikeStatus - POST</li>
         </ol>
       </li>
       <li>
