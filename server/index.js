@@ -8,7 +8,6 @@ const generalRoutes = require("./routes/general");
 const connectToDb = require("./util/database");
 
 const app = express();
-// require("dotenv").config();
 
 function logger(req, res, next) {
   console.log(`${req.method} ${req.url}`);
@@ -22,6 +21,6 @@ app.use(express.json());
 app.use(authenticationRoutes.routes);
 app.use(generalRoutes.routes);
 
-app.listen(process.env.PORT, () =>
+app.listen(process.env.PORT || 4000, () =>
   console.log(`Server is now working on port ${process.env.PORT}`)
 );
