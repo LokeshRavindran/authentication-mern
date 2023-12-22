@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { DevTool } from "@hookform/devtools";
 import FormTextInput from "../components/FormInput/FormTextInput";
 import FormButton from "../components/FormButton/FormButton";
@@ -100,6 +100,10 @@ const Login = () => {
           <FormButton name="Login" />
         </form>
         {/* <DevTool control={control} /> */}
+        <div className="flex flex-col gap-1 mt-2 items-center child:underline">
+          <NavLink to={"/signup"}>Signup</NavLink>
+          <NavLink to={"/homepage"}>Back to Home</NavLink>
+        </div>
       </div>
     </div>
   );

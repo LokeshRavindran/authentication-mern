@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { DevTool } from "@hookform/devtools";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 import FormTextInput from "../components/FormInput/FormTextInput";
 // import FormNumberInput from "../components/FormInput/FormNumberInput";
@@ -63,7 +63,7 @@ const Signup = () => {
           onSubmit={handleSubmit(onFormSubmit)}
           noValidate // prevents browsers default validations
         >
-          <div className="flex gap-4 max-sm:flex-col">
+          <div className="flex gap-4 max-sm:flex-col max-sm:gap-0">
             <FormTextInput
               type="text"
               label="Name*"
@@ -126,7 +126,7 @@ const Signup = () => {
               },
             })}
           />
-          <div className="flex gap-4 child:w-2/4 max-sm:flex-col max-sm:child:w-auto">
+          <div className="flex gap-4 child:w-2/4 max-sm:flex-col max-sm:child:w-auto max-sm:gap-0">
             <FormSelectInput
               label="Country*"
               error={errors}
@@ -151,6 +151,10 @@ const Signup = () => {
           <FormButton name="Sign-Up" />
         </form>
         {/* <DevTool control={control} /> */}
+        <div className="flex flex-col gap-1 mt-2 items-center child:underline">
+          <NavLink to={"/login"}>Login</NavLink>
+          <NavLink to={"/homepage"}>Back to Home</NavLink>
+        </div>
       </div>
     </div>
   );
