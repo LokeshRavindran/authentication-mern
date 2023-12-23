@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { getHomepageSections } from "../service/general";
 import { errorToast } from "../helper/toastHelper";
 import AuthContext from "../context/AuthContext";
-import FilledHeart from "/images/heart-filled.png";
+import FilledHeart from "./images/heart-filled.png";
 
 const Homepage = () => {
   const authContext = useContext(AuthContext);
