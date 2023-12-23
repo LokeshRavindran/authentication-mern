@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import ProfileOptions from "./ProfileOptions";
+import Logo from "/assets/images/logo.png";
 
 const Header = () => {
   const authContext = useContext(AuthContext);
@@ -9,7 +10,7 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between p-8 bg-violet-400">
       <Link to={"/"}>
-        <img src={"/assets/images/logo.png"} alt="logo" className="h-10 w-10" />
+        <img src={Logo} alt="logo" className="h-10 w-10" />
       </Link>
       {authContext.isLoggedIn ? (
         <ProfileOptions />
