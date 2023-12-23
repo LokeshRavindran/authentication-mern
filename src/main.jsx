@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthContextProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={"/authentication-mern"}>
         <App />
         <ToastContainer />
       </BrowserRouter>
