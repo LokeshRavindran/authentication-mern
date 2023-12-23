@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { getProfileInformation, updateLikeStatus } from "../service/general";
 import { errorToast } from "../helper/toastHelper";
 import AuthContext from "../context/AuthContext";
-import BrokenHeart from "./images/heart-broken.png";
-import FilledHeart from "./images/heart-filled.png";
+import BrokenHeart from "/assets/images/heart-broken.png";
+import FilledHeart from "/assets/images/heart-filled.png";
 
 const Profile = () => {
   const [profileData, setProfileData] = useState({});

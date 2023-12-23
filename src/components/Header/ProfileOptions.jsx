@@ -25,13 +25,13 @@ const ProfileOptions = () => {
     <div className="relative">
       <div className="flex items-center gap-0.5">
         <img
-          src={"./images/profile-icon.png"}
+          src={"/assets/images/profile-icon.png"}
           alt="profile-icon"
           className="h-10 w-10"
         />
         <p>Profile</p>
         <img
-          src={"./images/down-arrow.png"}
+          src={"/assets/images/down-arrow.png"}
           alt="down-arrow"
           className="h-6 w-6 cursor-pointer"
           onClick={profileHandler}
