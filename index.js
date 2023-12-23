@@ -14,13 +14,18 @@ function logger(req, res, next) {
   next();
 }
 
-connectToDb();
 app.use(cors());
 app.use(logger);
 app.use(express.json());
 app.use(authenticationRoutes.routes);
 app.use(generalRoutes.routes);
 
-app.listen(process.env.PORT || 4000, () =>
-  console.log(`Server is now working on port ${process.env.PORT}`)
-);
+connectToDb()
+  .then(() => {
+    app.listen(process.env.PORT || 4000, () =>
+      console.log(`Server is now working on port ${process.env.PORT}`)
+    );
+  })
+  .catch(() => {
+    console.log("Server error");
+  });
