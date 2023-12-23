@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between p-8 bg-violet-400">
       <Link to={"/"}>
-        <img src={"/images/logo.png"} alt="logo" className="h-10 w-10" />
+        <img src={"./images/logo.png"} alt="logo" className="h-10 w-10" />
       </Link>
       {authContext.isLoggedIn ? (
         <ProfileOptions />

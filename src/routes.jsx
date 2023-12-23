@@ -9,8 +9,8 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 const routes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/homepage" element={<Navigate to="/" />} />
+      <Route path="/" element={<Navigate to="/homepage" />} />
+      <Route path="/homepage" element={<Homepage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route
