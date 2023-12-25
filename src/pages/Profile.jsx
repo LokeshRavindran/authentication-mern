@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Hearts } from "react-loader-spinner";
 import { getProfileInformation, updateLikeStatus } from "../service/general";
 import { errorToast } from "../helper/toastHelper";
 import AuthContext from "../context/AuthContext";
@@ -7,6 +8,7 @@ import FilledHeart from "/assets/images/heart-filled.png";
 
 const Profile = () => {
   const [profileData, setProfileData] = useState({});
+  const [loading, setLoading] = useState(false);
   const authcontext = useContext(AuthContext);
 
   useEffect(() => {
@@ -19,19 +21,23 @@ const Profile = () => {
         username: authcontext.username,
       });
       setProfileData(response);
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       errorToast(error.message);
     }
   }
 
   async function favoriteHandler() {
     try {
+      setLoading(true);
       await updateLikeStatus({
         username: authcontext.username,
         status: !profileData.likeStatus,
       });
       getProfileData();
     } catch (error) {
+      setLoading(false);
       errorToast(error.message);
     }
   }
@@ -72,6 +78,16 @@ const Profile = () => {
           />
         </div>
       </div>
+      {loading && (
+        <Hearts
+          height="80"
+          width="80"
+          color="#F44335"
+          ariaLabel="hearts-loading"
+          wrapperClass="loader"
+          visible={true}
+        />
+      )}
     </div>
   );
 };
